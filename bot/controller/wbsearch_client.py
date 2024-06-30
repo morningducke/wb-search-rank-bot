@@ -124,8 +124,12 @@ class WBSearchClient:
             batched_pages = await asyncio.gather(*[self._get_search_page(query_params=p, headers=headers) for p in batched_params])
                 
             for page_num, page in enumerate(batched_pages, start=2):
+                if not page:
+                    continue
+                
                 item = self._get_item_on_page(products=page["products"], id=item_id)
                 cur_page = page_num
+                
                 if item:
                     break
             

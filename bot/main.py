@@ -38,12 +38,12 @@ async def command_search_handler(message: Message, command: CommandObject) -> No
     try:
         args = command.args.split()
         if len(args) < 2:
-            await message.answer(Errors.WRONG_INPUT_VERBOSE)
+            await message.answer(Errors.WRONG_INPUT)
             return
         
         query, item_id = " ".join(args[:-1]), args[-1]
         if not item_id.isnumeric():
-            await message.answer(Errors.WRONG_INPUT)
+            await message.answer(Errors.WRONG_INPUT_VERBOSE)
             return
         item_id = int(item_id)
             

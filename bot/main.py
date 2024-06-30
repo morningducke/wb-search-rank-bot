@@ -41,7 +41,12 @@ async def command_search_handler(message: Message, command: CommandObject) -> No
             await message.answer(Errors.WRONG_INPUT)
             return
         
-        query, item_id = " ".join(args[:-1]), int(args[-1])
+        query, item_id = " ".join(args[:-1]), args[-1]
+        if not item_id.isnumeric():
+            await message.answer(Errors.WRONG_INPUT)
+            return
+        item_id = int(item_id)
+            
         await bot.send_chat_action(chat_id=message.chat.id, action="typing")
         product_on_page = await get_search_position(query=query, item_id=item_id, client=wb_search_client)
         if not product_on_page:

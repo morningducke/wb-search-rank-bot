@@ -1,7 +1,6 @@
 from pydantic import BaseModel
 
 class Product(BaseModel):
-    # TODO: annotate with pydantic
     id: int
     name: str
     brand_name: str

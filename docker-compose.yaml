@@ -1,0 +1,10 @@
+services:
+  wb-search-rank-bot:
+    build: .
+    container_name: wb-search-rank-bot
+    command: python3 -m bot.main
+    ports:
+      - 80:80
+    volumes:
+      - .:/code
+

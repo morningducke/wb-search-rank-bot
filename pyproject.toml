@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools >= 70.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "wb-search-rank-bot"
+version = "2024.29.06"
+dependencies = [
+  "python-dotenv>=1.0.1",
+  "aiogram>=3.8.0"
+]
+requires-python = ">=3.11"
+authors = [
+  {name = "morningducke"}
+]
+maintainers = [
+  {name = "morningducke"}
+]
+description = "a telegram bot that tells the position of an item in wildberries search"
+readme = "README.md"
+license = {file = "LICENSE.txt"}
+classifiers = [
+  "Programming Language :: Python",
+  "License :: OSI Approved :: MIT License",
+  "Private :: Do Not Upload"
+]
+
+# [project.urls]
+# Homepage = "placeholder"

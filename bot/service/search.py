@@ -1,6 +1,6 @@
 from typing import Annotated
 from bot.config import WbApiConfig
-from bot.controller.wbsearch_client import WBSearchClient
+from bot.service.wbsearch_client import WBSearchClient
 from bot.schemas.product_schemas import ProductOnPage
 from pydantic import Field, StringConstraints, validate_call
 

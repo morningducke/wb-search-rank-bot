@@ -15,8 +15,8 @@ from bot.schemas.error_strings import Errors
 from pydantic import ValidationError
 
 from bot.utils import build_product_on_page_string
-from bot.controller.search import get_search_position
-from bot.controller.wbsearch_client import WBSearchClient
+from bot.service.search import get_search_position
+from bot.service.wbsearch_client import WBSearchClient
 from bot.schemas.string_constants import start_string, fallback_string, commands_info_string
 
 dp = Dispatcher()

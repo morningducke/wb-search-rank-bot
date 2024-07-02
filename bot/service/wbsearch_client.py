@@ -76,10 +76,13 @@ class WBSearchClient:
         data = None
         while not is_response_correct and retries <= self.max_retries:
             async with self._session.get(request_string, params=query_params, headers=headers) as response:
-                    data = await response.json(content_type="text/plain")
-                    is_response_correct = True if len(data["data"]["products"]) > 1 else False
-                    # if not is_response_correct:
-                    #     await asyncio.sleep(0.3) # на всякий случай задержка между неудачными запросами
+                if response.status == 429:
+                    print("too many requests")
+                    asyncio.sleep(0.2)
+                    continue
+                data = await response.json(content_type="text/plain")
+                is_response_correct = True if len(data["data"]["products"]) > 1 else False
+                
             retries += 1
                         
         if data and len(data["data"]["products"]) > 1:

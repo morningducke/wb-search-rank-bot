@@ -77,7 +77,6 @@ class WBSearchClient:
         while not is_response_correct and retries <= self.max_retries:
             async with self._session.get(request_string, params=query_params, headers=headers) as response:
                 if response.status == 429:
-                    print("too many requests")
                     asyncio.sleep(0.2)
                     continue
                 data = await response.json(content_type="text/plain")

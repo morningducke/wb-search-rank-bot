@@ -61,6 +61,7 @@ async def command_search_handler(message: Message, command: CommandObject) -> No
         return
     except Exception as e:
         await message.answer(Errors.GENERAL)
+        print(repr(e))
         return
     
     await message.answer(build_product_on_page_string(product_on_page)) 

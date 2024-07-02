@@ -25,5 +25,5 @@ classifiers = [
   "Private :: Do Not Upload"
 ]
 
-# [project.urls]
-# Homepage = "placeholder"
+[project.urls]
+Homepage = "https://t.me/wb_search_rank_bot"

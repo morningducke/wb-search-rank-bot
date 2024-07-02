@@ -79,7 +79,7 @@ class WBSearchClient:
                     data = await response.json(content_type="text/plain")
                     is_response_correct = True if len(data["data"]["products"]) > 1 else False
                     if not is_response_correct:
-                        await asyncio.sleep(0.1) # на всякий случай задержка между неудачными запросами
+                        await asyncio.sleep(0.3) # на всякий случай задержка между неудачными запросами
             retries += 1
                         
         if data and len(data["data"]["products"]) > 1:

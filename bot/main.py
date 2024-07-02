@@ -17,7 +17,7 @@ from pydantic import ValidationError
 from bot.utils import build_product_on_page_string
 from bot.service.search import get_search_position
 from bot.service.wbsearch_client import WBSearchClient
-from bot.schemas.string_constants import start_string, fallback_string, commands_info_string
+from bot.schemas.string_constants import start_string, fallback_string, commands_info_string, long_wait_string
 
 dp = Dispatcher()
 bot = Bot(token=cfg.BOT_TOKEN, default=DefaultBotProperties(parse_mode=ParseMode.HTML))
@@ -46,7 +46,8 @@ async def command_search_handler(message: Message, command: CommandObject) -> No
             await message.answer(Errors.WRONG_INPUT_VERBOSE)
             return
         item_id = int(item_id)
-            
+        
+        await message.answer(long_wait_string)    
         await bot.send_chat_action(chat_id=message.chat.id, action="typing")
         product_on_page = await get_search_position(query=query, item_id=item_id, client=wb_search_client)
         if not product_on_page:
